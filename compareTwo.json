@@ -1,0 +1,396 @@
+{
+    "whisper_list_word": [
+        "mike",
+        "gets",
+        "up",
+        "at",
+        "6am",
+        "every",
+        "morning",
+        "he",
+        "makes",
+        "breakfast",
+        "and",
+        "drinks",
+        "a",
+        "coffee",
+        "he",
+        "drives",
+        "to",
+        "work",
+        "in",
+        "his",
+        "car",
+        "his",
+        "work",
+        "starts",
+        "at",
+        "730am",
+        "mike",
+        "is",
+        "a",
+        "cook",
+        "at",
+        "a",
+        "restaurant",
+        "he",
+        "makes",
+        "food",
+        "for",
+        "hungry",
+        "customers",
+        "the",
+        "customers",
+        "are",
+        "from",
+        "many",
+        "countries",
+        "they",
+        "speak",
+        "many",
+        "different",
+        "languages",
+        "mike",
+        "can",
+        "meet",
+        "many",
+        "friendly",
+        "people",
+        "mike",
+        "is",
+        "happy",
+        "when",
+        "he",
+        "talks",
+        "to",
+        "the",
+        "customers"
+    ],
+    "whisper_time_stamp": [
+        {
+            "word": "mike",
+            "start": 0.0,
+            "end": 0.63
+        },
+        {
+            "word": "gets",
+            "start": 0.63,
+            "end": 1.25
+        },
+        {
+            "word": "up",
+            "start": 1.25,
+            "end": 1.88
+        },
+        {
+            "word": "at",
+            "start": 1.88,
+            "end": 2.5
+        },
+        {
+            "word": "6am",
+            "start": 2.5,
+            "end": 3.13
+        },
+        {
+            "word": "every",
+            "start": 3.13,
+            "end": 3.75
+        },
+        {
+            "word": "morning",
+            "start": 3.75,
+            "end": 4.38
+        },
+        {
+            "word": "he",
+            "start": 4.38,
+            "end": 4.88
+        },
+        {
+            "word": "makes",
+            "start": 4.88,
+            "end": 5.39
+        },
+        {
+            "word": "breakfast",
+            "start": 5.39,
+            "end": 5.89
+        },
+        {
+            "word": "and",
+            "start": 5.89,
+            "end": 6.39
+        },
+        {
+            "word": "drinks",
+            "start": 6.39,
+            "end": 6.89
+        },
+        {
+            "word": "a",
+            "start": 6.89,
+            "end": 7.4
+        },
+        {
+            "word": "coffee",
+            "start": 7.4,
+            "end": 7.9
+        },
+        {
+            "word": "he",
+            "start": 7.9,
+            "end": 8.24
+        },
+        {
+            "word": "drives",
+            "start": 8.24,
+            "end": 8.57
+        },
+        {
+            "word": "to",
+            "start": 8.57,
+            "end": 8.91
+        },
+        {
+            "word": "work",
+            "start": 8.91,
+            "end": 9.25
+        },
+        {
+            "word": "in",
+            "start": 9.25,
+            "end": 9.59
+        },
+        {
+            "word": "his",
+            "start": 9.59,
+            "end": 9.92
+        },
+        {
+            "word": "car",
+            "start": 9.92,
+            "end": 10.26
+        },
+        {
+            "word": "his",
+            "start": 10.26,
+            "end": 10.95
+        },
+        {
+            "word": "work",
+            "start": 10.95,
+            "end": 11.64
+        },
+        {
+            "word": "starts",
+            "start": 11.64,
+            "end": 12.32
+        },
+        {
+            "word": "at",
+            "start": 12.32,
+            "end": 13.01
+        },
+        {
+            "word": "730am",
+            "start": 13.01,
+            "end": 13.7
+        },
+        {
+            "word": "mike",
+            "start": 13.7,
+            "end": 14.02
+        },
+        {
+            "word": "is",
+            "start": 14.02,
+            "end": 14.34
+        },
+        {
+            "word": "a",
+            "start": 14.34,
+            "end": 14.66
+        },
+        {
+            "word": "cook",
+            "start": 14.66,
+            "end": 14.98
+        },
+        {
+            "word": "at",
+            "start": 14.98,
+            "end": 15.3
+        },
+        {
+            "word": "a",
+            "start": 15.3,
+            "end": 15.62
+        },
+        {
+            "word": "restaurant",
+            "start": 15.62,
+            "end": 15.94
+        },
+        {
+            "word": "he",
+            "start": 15.94,
+            "end": 16.43
+        },
+        {
+            "word": "makes",
+            "start": 16.43,
+            "end": 16.91
+        },
+        {
+            "word": "food",
+            "start": 16.91,
+            "end": 17.4
+        },
+        {
+            "word": "for",
+            "start": 17.4,
+            "end": 17.89
+        },
+        {
+            "word": "hungry",
+            "start": 17.89,
+            "end": 18.37
+        },
+        {
+            "word": "customers",
+            "start": 18.37,
+            "end": 18.86
+        },
+        {
+            "word": "the",
+            "start": 18.86,
+            "end": 19.39
+        },
+        {
+            "word": "customers",
+            "start": 19.39,
+            "end": 19.91
+        },
+        {
+            "word": "are",
+            "start": 19.91,
+            "end": 20.44
+        },
+        {
+            "word": "from",
+            "start": 20.44,
+            "end": 20.97
+        },
+        {
+            "word": "many",
+            "start": 20.97,
+            "end": 21.49
+        },
+        {
+            "word": "countries",
+            "start": 21.49,
+            "end": 22.02
+        },
+        {
+            "word": "they",
+            "start": 22.02,
+            "end": 22.71
+        },
+        {
+            "word": "speak",
+            "start": 22.71,
+            "end": 23.4
+        },
+        {
+            "word": "many",
+            "start": 23.4,
+            "end": 24.08
+        },
+        {
+            "word": "different",
+            "start": 24.08,
+            "end": 24.77
+        },
+        {
+            "word": "languages",
+            "start": 24.77,
+            "end": 25.46
+        },
+        {
+            "word": "mike",
+            "start": 25.46,
+            "end": 25.96
+        },
+        {
+            "word": "can",
+            "start": 25.96,
+            "end": 26.46
+        },
+        {
+            "word": "meet",
+            "start": 26.46,
+            "end": 26.96
+        },
+        {
+            "word": "many",
+            "start": 26.96,
+            "end": 27.46
+        },
+        {
+            "word": "friendly",
+            "start": 27.46,
+            "end": 27.96
+        },
+        {
+            "word": "people",
+            "start": 27.96,
+            "end": 28.46
+        },
+        {
+            "word": "mike",
+            "start": 28.46,
+            "end": 28.75
+        },
+        {
+            "word": "is",
+            "start": 28.75,
+            "end": 29.05
+        },
+        {
+            "word": "happy",
+            "start": 29.05,
+            "end": 29.34
+        },
+        {
+            "word": "when",
+            "start": 29.34,
+            "end": 29.63
+        },
+        {
+            "word": "he",
+            "start": 29.63,
+            "end": 29.93
+        },
+        {
+            "word": "talks",
+            "start": 29.93,
+            "end": 30.22
+        },
+        {
+            "word": "to",
+            "start": 30.22,
+            "end": 30.51
+        },
+        {
+            "word": "the",
+            "start": 30.51,
+            "end": 30.81
+        },
+        {
+            "word": "customers",
+            "start": 30.81,
+            "end": 31.1
+        }
+    ]
+}
