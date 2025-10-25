@@ -1,91 +1,166 @@
+"""
+=========================================
+Text & Whisper Alignment Preprocessor
+=========================================
+Purpose:
+    Process a text transcript and a Whisper ASR result file
+    to generate two comparable datasets:
+      1. Reference text data (cleaned words + sentence structure)
+      2. Whisper output (cleaned words + estimated word timestamps)
+
+Workflow:
+    1. Read the input text (.txt) file.
+    2. Clean and normalize each word.
+    3. Split text into sentences and paragraphs.
+    4. Save cleaned reference data as JSON.
+    5. Read Whisper result (.json).
+    6. Estimate timestamps for each word.
+    7. Save Whisper output as JSON.
+
+Author: (your name)
+Date: (today’s date)
+"""
+
 import json
 import re
 import unicodedata
 
-i=1
 
+# ======================================
+# 1. Load and preprocess raw text
+# ======================================
+
+i = 2  # file index for test/test{i}.txt and test/result{i}.json
+
+# Read text file
 with open(f"test/test{i}.txt", "r", encoding="utf-8") as f:
     text = f.read()
 
+
 def clean_word(word: str) -> str:
-    """Làm sạch 1 từ (dành cho tiếng Anh)."""
-    word = word.lower().strip()
-    word = unicodedata.normalize("NFKD", word)
-    word = word.replace("’", "'").replace("–", "-").replace("—", "-")
-    word = re.sub(r"[^\w\s']", "", word)
-    return word
+    """
+    Normalize and clean a single English word.
+
+    Steps:
+        - Lowercase and strip whitespace.
+        - Normalize Unicode (NFKD) for consistent accents and symbols.
+        - Replace smart quotes and various dash symbols.
+        - Remove non-alphanumeric characters except apostrophes.
+
+    Returns:
+        str: cleaned word
+    """
+    w = word.lower().strip()
+    w = unicodedata.normalize("NFKD", w)
+    w = w.replace("’", "'").replace("–", "-").replace("—", "-")
+    w = re.sub(r"[^\w\s']", "", w)
+    return w
 
 
-def split_into_paragraph_sentences(text: str):
+def get_sentence_lists(text: str):
     """
-    Tách đoạn văn thành mảng 2 chiều:
-    - Mỗi đoạn (ngăn cách bởi newline) là một mảng con.
-    - Mỗi mảng con chứa các câu (ngăn cách bởi ., !, ?, hoặc xuống dòng).
+    Split raw text into lists of sentences.
+
+    Args:
+        text (str): the input text (may contain multiple paragraphs)
+
+    Returns:
+        tuple:
+            - one_dimention_sentence_list (list[str]):
+              flat list of all sentences across paragraphs
+            - two_dimention_sentence_list (list[list[str]]):
+              list of paragraphs, each containing a list of sentences
     """
-    # Chuẩn hóa newline
+    # Normalize newlines and trim whitespace
     t = text.replace('\r\n', '\n').replace('\r', '\n').strip()
 
+    # Split by blank lines into paragraphs
+    paras = re.split(r"\n+", t)
+    paras = [para.strip() for para in paras if para.strip()]
 
-    paragraphs = re.split(r'\n+', t)
-    paragraphs = [p.strip() for p in paragraphs if p.strip()]
+    one_dimention_sentence_list = []
+    two_dimention_sentence_list = []
+
+    # Process each paragraph
+    for p in paras:
+        # Clean spacing before punctuation
+        p = re.sub(r"\s+([?.!])", r"\1", p)
+        # Mark sentence endings temporarily with <S>
+        p = re.sub(r"([!?.]+)", r"\1<S>", p)
+        # Normalize multiple spaces/tabs
+        p = re.sub(r"[ \t]+", " ", p)
+
+        # Split paragraph into sentences
+        sens = [s.strip() for s in p.split("<S>") if s.strip()]
+
+        # Collect results
+        one_dimention_sentence_list.extend(sens)
+        two_dimention_sentence_list.append(sens)
+
+    return one_dimention_sentence_list, two_dimention_sentence_list
 
 
-    sentences_in_para = []
-    sentences = []
-    for p in paragraphs:
-        # Xóa khoảng trắng trước dấu câu
-        p = re.sub(r'\s+([.!?])', r'\1', p)
+# Generate sentence lists
+one_dimention_sentence_list, two_dimention_sentence_list = get_sentence_lists(text)
 
-        # Chèn mốc sau dấu câu
-        p = re.sub(r'([.!?]+)', r'\1<S>', p)
 
-        # Gom nhiều khoảng trắng thành 1
-        p = re.sub(r'[ \t]+', ' ', p)
+# ======================================
+# 2. Build cleaned reference data
+# ======================================
 
-        # Tách thành danh sách câu
-        sens = [s.strip() for s in p.split('<S>') if s.strip()]
-        sentences_in_para.append(sens)
-        sentences.extend(sens)
-    return sentences_in_para, sentences
-sentences_in_para, sentences = split_into_paragraph_sentences(text)
+list_id = []   # list of tuples: (word, (word_index, sentence_index))
+list_ref = []  # list of cleaned words only
 
-list_ref = []
-list_id = []
-
-for s, sent in enumerate(sentences):
-    # print(s)
-    # print(sent)
-    list_words = [w for w in sent.split() ]
-
-    for w, word in enumerate(list_words):
-        list_id.append((word, (w, s)))
+for s_idx, sentence in enumerate(one_dimention_sentence_list):
+    for w_idx, word in enumerate(sentence.split()):
+        list_id.append((word, (w_idx, s_idx)))
         list_ref.append(clean_word(word))
-# Wrap it in a dict with key "ref"
+
+# Wrap into dictionary for export
 data_ref = {"ref": list_ref, "ref_id": list_id}
+
+# Save reference data as JSON
 with open('compareOne.json', 'w', encoding='utf-8') as f:
     json.dump(data_ref, f, indent=4)
-# -----------GET DATA WHISPER RESULT------------
 
+
+# ======================================
+# 3. Process Whisper transcription result
+# ======================================
+
+# Load Whisper JSON file
 with open(f'test/result{i}.json', encoding='utf-8') as f:
     data = json.load(f)['segments']
 
-wordtimestamp = []
-whisper = []
+whisper_wordtimestamp = []  # list of word timestamp dictionaries
+whisper = []                # list of cleaned words
 
-def handleSentence(text, start, end):
-    duration = end - start
-    listwords = text.split()
-    listwords = [item for item in listwords if item != '']
-    if len(listwords) != 0:
-        gap = duration / len(listwords) 
+for item in data:
+    start_sentence = item["start"]
+    end_sentence = item["end"]
+    list_words = [clean_word(w) for w in item["text"].split()]
+
+    # If Whisper provides a segment with no words, assign a default gap
+    if len(list_words) != 0:
+        gap = (end_sentence - start_sentence) / len(list_words)
     else:
         gap = 1
-    for i, word in enumerate(listwords):
-        cls = clean_word(word)
-        wordtimestamp.append({"word": cls, "start": round(start + gap * i, 2), "end": round(start + gap * (i+1), 2)})
-        whisper.append(cls)
-for k in range(len(data)):
-    handleSentence(data[k]["text"], data[k]["start"], data[k]["end"])
 
+    # Distribute timestamps evenly across words in the segment
+    for i, word in enumerate(list_words):
+        whisper.append(word)
+        whisper_wordtimestamp.append(
+            {
+                "word": word,
+                "start": round(start_sentence + gap * i, 2),
+                "end": round(start_sentence + gap * (i + 1), 2),
+            }
+        )
+
+# Save Whisper results as JSON
 with open('compareTwo.json', 'w', encoding='utf-8') as f:
-    json.dump({"whisper_list_word": whisper, "whisper_time_stamp" : wordtimestamp}, f, indent=4)
+    json.dump(
+        {"whisper_list_word": whisper, "whisper_time_stamp": whisper_wordtimestamp},
+        f,
+        indent=4,
+    )

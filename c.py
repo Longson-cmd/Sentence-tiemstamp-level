@@ -3,6 +3,8 @@ import sys
 from pydub import AudioSegment
 import simpleaudio as sa
 
+
+i = 2
 # ---- Load JSON file ----
 with open("checkaudio.json", "r", encoding="utf-8") as file:
     sentence_timestamps = json.load(file)
@@ -36,15 +38,26 @@ print(f"Text : {text}")
 print(f"Start: {start}s, End: {end}s")
 
 # ---- Load and play audio ----
-audio = AudioSegment.from_file("test1.mp3", format="mp3")
+# Load the audio file "test{i}.mp3" using pydub's AudioSegment class
+# The 'format="mp3"' argument tells it the file type explicitly.
+audio = AudioSegment.from_file(f"test{i}.mp3", format="mp3")
+
+# Extract a portion of the audio from 'start' to 'end' (in seconds)
+# pydub works in milliseconds, so multiply by 1000.
 segment = audio[start * 1000 : end * 1000]
 
+# Play the selected audio segment using simpleaudio
+# 'segment.raw_data' gives the raw PCM audio bytes
+# 'num_channels' = mono or stereo, 'bytes_per_sample' = sample width (e.g., 2 bytes)
+# 'sample_rate' = playback speed in Hz
 play_obj = sa.play_buffer(
     segment.raw_data,
     num_channels=segment.channels,
     bytes_per_sample=segment.sample_width,
     sample_rate=segment.frame_rate
 )
+
+# Wait until the playback finishes before continuing the script
 play_obj.wait_done()
 
 print("\n✅ Done playing.")

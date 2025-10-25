@@ -52,198 +52,247 @@
     ],
     "whisper_time_stamp": [
         {
+            "word": "who",
             "start": 0.0,
             "end": 0.59
         },
         {
+            "word": "is",
             "start": 0.59,
             "end": 1.18
         },
         {
+            "word": "she",
             "start": 1.18,
             "end": 1.78
         },
         {
+            "word": "part",
             "start": 1.78,
             "end": 2.37
         },
         {
+            "word": "1",
             "start": 2.37,
             "end": 2.96
         },
         {
+            "word": "hello",
             "start": 2.96,
             "end": 3.38
         },
         {
+            "word": "what",
             "start": 3.38,
             "end": 3.81
         },
         {
+            "word": "can",
             "start": 3.81,
             "end": 4.23
         },
         {
+            "word": "i",
             "start": 4.23,
             "end": 4.65
         },
         {
+            "word": "do",
             "start": 4.65,
             "end": 5.07
         },
         {
+            "word": "for",
             "start": 5.07,
             "end": 5.5
         },
         {
+            "word": "you",
             "start": 5.5,
             "end": 5.92
         },
         {
+            "word": "my",
             "start": 5.92,
             "end": 6.32
         },
         {
+            "word": "name",
             "start": 6.32,
             "end": 6.72
         },
         {
+            "word": "is",
             "start": 6.72,
             "end": 7.12
         },
         {
+            "word": "jane",
             "start": 7.12,
             "end": 7.52
         },
         {
+            "word": "how",
             "start": 7.52,
             "end": 7.86
         },
         {
+            "word": "do",
             "start": 7.86,
             "end": 8.2
         },
         {
+            "word": "you",
             "start": 8.2,
             "end": 8.54
         },
         {
+            "word": "do",
             "start": 8.54,
             "end": 8.88
         },
         {
+            "word": "glad",
             "start": 8.88,
             "end": 9.22
         },
         {
+            "word": "to",
             "start": 9.22,
             "end": 9.56
         },
         {
+            "word": "meet",
             "start": 9.56,
             "end": 9.9
         },
         {
+            "word": "you",
             "start": 9.9,
             "end": 10.24
         },
         {
+            "word": "glad",
             "start": 10.24,
             "end": 10.64
         },
         {
+            "word": "to",
             "start": 10.64,
             "end": 11.04
         },
         {
+            "word": "meet",
             "start": 11.04,
             "end": 11.44
         },
         {
+            "word": "you",
             "start": 11.44,
             "end": 11.84
         },
         {
+            "word": "too",
             "start": 11.84,
             "end": 12.24
         },
         {
+            "word": "what",
             "start": 12.24,
             "end": 12.53
         },
         {
+            "word": "is",
             "start": 12.53,
             "end": 12.82
         },
         {
+            "word": "your",
             "start": 12.82,
             "end": 13.1
         },
         {
+            "word": "friend's",
             "start": 13.1,
             "end": 13.39
         },
         {
+            "word": "name",
             "start": 13.39,
             "end": 13.68
         },
         {
+            "word": "my",
             "start": 13.68,
             "end": 14.1
         },
         {
+            "word": "friend's",
             "start": 14.1,
             "end": 14.51
         },
         {
+            "word": "name",
             "start": 14.51,
             "end": 14.93
         },
         {
+            "word": "is",
             "start": 14.93,
             "end": 15.34
         },
         {
+            "word": "sally",
             "start": 15.34,
             "end": 15.76
         },
         {
+            "word": "hello",
             "start": 15.76,
             "end": 16.22
         },
         {
+            "word": "jane",
             "start": 16.22,
             "end": 16.68
         },
         {
+            "word": "hello",
             "start": 16.68,
             "end": 17.14
         },
         {
+            "word": "sally",
             "start": 17.14,
             "end": 17.6
         },
         {
+            "word": "nice",
             "start": 18.32,
             "end": 18.57
         },
         {
+            "word": "to",
             "start": 18.57,
             "end": 18.83
         },
         {
+            "word": "meet",
             "start": 18.83,
             "end": 19.08
         },
         {
+            "word": "both",
             "start": 19.08,
             "end": 19.33
         },
         {
+            "word": "of",
             "start": 19.33,
             "end": 19.59
         },
         {
+            "word": "you",
             "start": 19.59,
             "end": 19.84
         }
